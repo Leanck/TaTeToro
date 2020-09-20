@@ -75,7 +75,7 @@ public class PantallaDeJuego {
 		panel1.setBounds(89, 170, 123, 124);
 		frame.getContentPane().add(panel1);
 		
-		
+		//-----------------------------------------------------------
 		panel1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
@@ -89,9 +89,7 @@ public class PantallaDeJuego {
 			}
 		});
 		
-		
-		
-		
+		//-----------------------------------------------------------
 		JLabel panel2 = new JLabel("");
 		panel2.setBounds(232, 170, 123, 124);
 		frame.getContentPane().add(panel2);
@@ -107,7 +105,7 @@ public class PantallaDeJuego {
 				juego.cambiarTurno();
 			}
 		});
-		
+		//-----------------------------------------------------------
 		JLabel panel3 = new JLabel("");
 		panel3.setBounds(376, 170, 123, 124);
 		frame.getContentPane().add(panel3);
@@ -123,7 +121,7 @@ public class PantallaDeJuego {
 				juego.cambiarTurno();
 			}
 		});
-		
+		//-----------------------------------------------------------
 		JLabel panel4 = new JLabel("");
 		panel4.setBounds(89, 314, 123, 124);
 		frame.getContentPane().add(panel4);
@@ -139,7 +137,7 @@ public class PantallaDeJuego {
 				juego.cambiarTurno();
 			}
 		});
-		
+		//-----------------------------------------------------------
 		JLabel panel5 = new JLabel("");
 		panel5.setBounds(232, 314, 123, 124);
 		frame.getContentPane().add(panel5);
@@ -155,7 +153,7 @@ public class PantallaDeJuego {
 				juego.cambiarTurno();
 			}
 		});
-		
+		//-----------------------------------------------------------
 		JLabel panel6 = new JLabel("");
 		panel6.setBounds(376, 314, 123, 124);
 		frame.getContentPane().add(panel6);
@@ -171,7 +169,7 @@ public class PantallaDeJuego {
 				juego.cambiarTurno();
 			}
 		});
-		
+		//-----------------------------------------------------------
 		JLabel panel7 = new JLabel("");
 		panel7.setBounds(89, 456, 123, 124);
 		frame.getContentPane().add(panel7);
@@ -187,7 +185,7 @@ public class PantallaDeJuego {
 				juego.cambiarTurno();
 			}
 		});
-		
+		//-----------------------------------------------------------
 		JLabel panel8 = new JLabel("");
 		panel8.setBounds(232, 456, 123, 124);
 		frame.getContentPane().add(panel8);
@@ -203,7 +201,7 @@ public class PantallaDeJuego {
 				juego.cambiarTurno();
 			}
 		});
-		
+		//-----------------------------------------------------------
 		JLabel panel9 = new JLabel("");
 		panel9.setBounds(376, 456, 123, 124);
 		frame.getContentPane().add(panel9);
