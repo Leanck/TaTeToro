@@ -3,13 +3,21 @@ package control;
 import java.awt.Color;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
+import interfazVersionMelanie.PantallaDeJuego;
+
 public class Juego {
 	private char turno;
 	private char[][] tablero;
 	private boolean habilitado;
+	private ImageIcon X;
+	private ImageIcon O;
 	
 	public Juego() {
 		turno = 'X';
+		X = new ImageIcon(PantallaDeJuego.class.getResource("/imagenesDelFondo/X.png"));
+		O = new ImageIcon(PantallaDeJuego.class.getResource("/imagenesDelFondo/O.png"));
 		habilitado = true;
 		tablero = new char[3][3];
 		for (int i = 0; i < tablero.length; i++) {
@@ -41,35 +49,27 @@ public class Juego {
 		}
 	}
 	//-----------------------------------------------------------
-	public String colocarSimboloDeJugador() {
+	public ImageIcon colocarSimbolo() {
 		if(turno == 'X') {
-			return "X";
+			return X;
 		}
 		else {
-			return "O";
+			return O;
 		}
 		
 	}
 	//-----------------------------------------------------------
-	public Color colorDeJugador() {
-		if(turno == 'X') {
-			return Color.RED;
-		}
-		else {
-			return Color.BLUE;
-		}
-	}
-	//-----------------------------------------------------------
-	public void agregarJugada(char txt) {
-		if(txt=='1' && habilitado==true) {
+	public void agregarJugada(int num) {
+		if(num==1 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[0][0] = 'X';
+				
 			}
 			else {
 				tablero[0][0] = 'O';
 			}
 		}
-		if(txt=='2' && habilitado==true) {
+		if(num==2 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[0][1] = 'X';
 			}
@@ -77,7 +77,7 @@ public class Juego {
 				tablero[0][1] = 'O';
 			}
 		}
-		if(txt=='3' && habilitado==true) {
+		if(num==3 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[0][2] = 'X';
 			}
@@ -85,7 +85,7 @@ public class Juego {
 				tablero[0][2] = 'O';
 			}
 		}
-		if(txt=='4' && habilitado==true) {
+		if(num==4 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[1][0] = 'X';
 			}
@@ -93,7 +93,7 @@ public class Juego {
 				tablero[1][0] = 'O';
 			}
 		}
-		if(txt=='5' && habilitado==true) {
+		if(num==5 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[1][1] = 'X';
 			}
@@ -101,7 +101,7 @@ public class Juego {
 				tablero[1][1] = 'O';
 			}
 		}
-		if(txt=='6' && habilitado==true) {
+		if(num==6 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[1][2] = 'X';
 			}
@@ -109,7 +109,7 @@ public class Juego {
 				tablero[1][2] = 'X';
 			}
 		}
-		if(txt=='7' && habilitado==true) {
+		if(num==7 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[2][0] = 'X';
 			}
@@ -117,7 +117,7 @@ public class Juego {
 				tablero[2][0] = 'O';
 			}
 		}
-		if(txt=='8' && habilitado==true) {
+		if(num==8 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[2][1] = 'X';
 			}
@@ -125,7 +125,7 @@ public class Juego {
 				tablero[2][1] = 'O';
 			}
 		}
-		if(txt=='9' && habilitado==true) {
+		if(num==9 && habilitado==true) {
 			if(turno == 'X') {
 				tablero[2][2] = 'X';
 			}

@@ -90,7 +90,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton1.setEnabled(false);
 				juego.agregarJugada(boton1.getText().charAt(0));
-				boton1.setText(juego.colocarSimboloDeJugador());
+				//boton1.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 				JOptionPane.showMessageDialog(null,"Hola ,soy un ventana!");
@@ -101,7 +101,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton2.setEnabled(false);
 				juego.agregarJugada(boton2.getText().charAt(0));
-				boton2.setText(juego.colocarSimboloDeJugador());
+				//boton2.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 			}
@@ -111,7 +111,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton3.setEnabled(false);
 				juego.agregarJugada(boton3.getText().charAt(0));
-				boton3.setText(juego.colocarSimboloDeJugador());
+				//boton3.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 			}
@@ -146,7 +146,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton4.setEnabled(false);
 				juego.agregarJugada(boton4.getText().charAt(0));
-				boton4.setText(juego.colocarSimboloDeJugador());
+				//boton4.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 				
@@ -157,7 +157,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton5.setEnabled(false);
 				juego.agregarJugada(boton5.getText().charAt(0));
-				boton5.setText(juego.colocarSimboloDeJugador());
+				//boton5.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 			}
@@ -167,7 +167,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton6.setEnabled(false);
 				juego.agregarJugada(boton6.getText().charAt(0));
-				boton6.setText(juego.colocarSimboloDeJugador());
+				//boton6.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 			}
@@ -202,7 +202,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton8.setEnabled(false);
 				juego.agregarJugada(boton8.getText().charAt(0));
-				boton8.setText(juego.colocarSimboloDeJugador());
+				//boton8.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 			}
@@ -212,7 +212,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton9.setEnabled(false);
 				juego.agregarJugada(boton9.getText().charAt(0));
-				boton9.setText(juego.colocarSimboloDeJugador());
+				//boton9.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 			}
@@ -222,7 +222,7 @@ public class Ventana {
 			public void actionPerformed(ActionEvent e) {
 				boton7.setEnabled(false);
 				juego.agregarJugada(boton7.getText().charAt(0));
-				boton7.setText(juego.colocarSimboloDeJugador());
+				//boton7.setText(juego.colocarSimboloDeJugador());
 				juego.jugadaGanadora();
 				juego.cambiarTurno();
 			}
