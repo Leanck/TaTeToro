@@ -8,25 +8,20 @@ import javax.swing.ImageIcon;
 import interfazVersionMelanie.PantallaDeJuego;
 
 public class Juego {
-	private char turno;
+	private static char turno;
 	private char[][] tablero;
-	private boolean habilitado;
-	private ImageIcon X;
-	private ImageIcon O;
+	private static boolean habilitado;
 	
 	public Juego() {
 		turno = 'X';
-		X = new ImageIcon(PantallaDeJuego.class.getResource("/imagenesDelFondo/X.png"));
-		O = new ImageIcon(PantallaDeJuego.class.getResource("/imagenesDelFondo/O.png"));
 		habilitado = true;
 		tablero = new char[3][3];
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero.length; j++) {
-				tablero[i][j]= ' '; 
-				
-			}
-			
+				tablero[i][j]= ' '; 			
+			}		
 		}
+		
 		tablero[0][0]='1';
 		tablero[0][1]='2';
 		tablero[0][2]='3';
@@ -37,6 +32,7 @@ public class Juego {
 		tablero[2][1]='8';
 		tablero[2][2]='9';
 		}
+	
 	//-----------------------------------------------------------
 	public void cambiarTurno() {
 		if(turno == 'X') {
@@ -45,19 +41,19 @@ public class Juego {
 		}
 		else {
 			turno = 'X';
-			System.out.println(habilitado);
+		   System.out.println(habilitado);
 		}
+	
 	}
-	//-----------------------------------------------------------
-	public ImageIcon colocarSimbolo() {
-		if(turno == 'X') {
-			return X;
-		}
-		else {
-			return O;
-		}
-		
-	}
+
+//	public void cambiarTurno() {
+//		if(turno == 'X')
+//			turno = 'O';
+//			//System.out.println(habilitado);
+//		turno = 'X';
+//		//System.out.println(habilitado);
+//	}
+
 	//-----------------------------------------------------------
 	public void agregarJugada(int num) {
 		if(num==1 && habilitado==true) {
@@ -174,5 +170,16 @@ public class Juego {
 		tablero[2][2] = '9';
 		habilitado=true;
 	}
+	
+	public static char getTurno() {
+		return turno;
+	}
+	
+	public static boolean isHabilitado() {
+		return habilitado;
+	}
+	
+	
 
+	
 }
