@@ -20,8 +20,7 @@ public class Juego {
 			for (int j = 0; j < tablero.length; j++) {
 				tablero[i][j]= ' '; 			
 			}		
-		}
-		
+		}	
 		tablero[0][0]='1';
 		tablero[0][1]='2';
 		tablero[0][2]='3';
@@ -58,8 +57,7 @@ public class Juego {
 	public void agregarJugada(int num) {
 		if(num==1 && habilitado==true) {
 			if(turno == 'X') {
-				tablero[0][0] = 'X';
-				
+				tablero[0][0] = 'X';	
 			}
 			else {
 				tablero[0][0] = 'O';

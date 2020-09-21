@@ -27,6 +27,15 @@ public class PantallaDeJuego {
 	private JFrame frame;
 	private ImageIcon X;
 	private ImageIcon O;
+	private boolean seleccionado1;
+	private boolean seleccionado2;
+	private boolean seleccionado3;
+	private boolean seleccionado4;
+	private boolean seleccionado5;
+	private boolean seleccionado6;
+	private boolean seleccionado7;
+	private boolean seleccionado8;
+	private boolean seleccionado9;
 
 	/**
 	 * Launch the application.
@@ -64,6 +73,7 @@ public class PantallaDeJuego {
 	private void initialize() { //frame del fondo principal
 		Juego juego = new Juego();
 		frame = new JFrame();
+		seleccionado1 = false;
 		frame.setBounds(680, 130, 600, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	//	frame.getContentPane().setBackground(Color.magenta); cambia color solido background
@@ -83,11 +93,10 @@ public class PantallaDeJuego {
 		frame.getContentPane().add(panel1);
 		
 		//-----------------------------------------------------------
-		
-		
+			
 		panel1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado1 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel1.setIcon(colocarSimbolo());
 					juego.agregarJugada(1);
@@ -95,6 +104,7 @@ public class PantallaDeJuego {
 					panel1.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();	
+					seleccionado1 = true;
 					}
 				}	
 		});
@@ -106,7 +116,7 @@ public class PantallaDeJuego {
 		
 		panel2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado2 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel2.setIcon(colocarSimbolo());
 					juego.agregarJugada(2);
@@ -114,6 +124,7 @@ public class PantallaDeJuego {
 					panel2.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();
+					seleccionado2 = true;
 				}
 			}
 		});
@@ -124,7 +135,7 @@ public class PantallaDeJuego {
 		
 		panel3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado3 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel3.setIcon(colocarSimbolo());
 					juego.agregarJugada(3);
@@ -132,6 +143,7 @@ public class PantallaDeJuego {
 					panel3.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();
+					seleccionado3 = true;
 					}
 				}
 		});
@@ -142,7 +154,7 @@ public class PantallaDeJuego {
 		
 		panel4.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado4 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel4.setIcon(colocarSimbolo());
 					juego.agregarJugada(4);
@@ -150,6 +162,7 @@ public class PantallaDeJuego {
 					panel4.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();
+					seleccionado4 = true;
 					}
 				}
 		});
@@ -160,7 +173,7 @@ public class PantallaDeJuego {
 		
 		panel5.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado5 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel5.setIcon(colocarSimbolo());
 					juego.agregarJugada(5);
@@ -168,6 +181,7 @@ public class PantallaDeJuego {
 					panel5.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();
+					seleccionado5 = true;
 					}
 				}
 				
@@ -179,7 +193,7 @@ public class PantallaDeJuego {
 		
 		panel6.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado6 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel6.setIcon(colocarSimbolo());
 					juego.agregarJugada(6);
@@ -187,7 +201,9 @@ public class PantallaDeJuego {
 					panel6.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();
+					seleccionado6 = true;
 				}
+				
 			}
 		});
 		//-----------------------------------------------------------
@@ -197,7 +213,7 @@ public class PantallaDeJuego {
 		
 		panel7.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado7 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel7.setIcon(colocarSimbolo());
 					juego.agregarJugada(7);
@@ -205,6 +221,7 @@ public class PantallaDeJuego {
 					panel7.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();
+					seleccionado7 = true;
 				}	
 			}
 				
@@ -216,7 +233,7 @@ public class PantallaDeJuego {
 		
 		panel8.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado8 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel8.setIcon(colocarSimbolo());
 					juego.agregarJugada(8);
@@ -224,6 +241,7 @@ public class PantallaDeJuego {
 					panel8.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();
+					seleccionado8 = true;
 					}
 				}
 		});
@@ -234,7 +252,7 @@ public class PantallaDeJuego {
 		
 		panel9.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (Juego.isHabilitado()) {
+				if (Juego.isHabilitado() && seleccionado9 == false) {
 					//panel1.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/imagenesDelFondo/X.png")));
 					panel9.setIcon(colocarSimbolo());
 					juego.agregarJugada(9);
@@ -242,9 +260,9 @@ public class PantallaDeJuego {
 					panel9.setHorizontalTextPosition(SwingConstants.CENTER);
 					juego.jugadaGanadora();
 					juego.cambiarTurno();
+					seleccionado9 = true;
 					}
 				}
 	    	});
-		
 	}
 }
