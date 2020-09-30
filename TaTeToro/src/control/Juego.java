@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import interfazVersionMelanie.PantallaDeJuego;
+import interfaz.Ventana;
 
 public class Juego {
 	private static char turno;
@@ -44,14 +44,6 @@ public class Juego {
 		}
 	
 	}
-
-//	public void cambiarTurno() {
-//		if(turno == 'X')
-//			turno = 'O';
-//			//System.out.println(habilitado);
-//		turno = 'X';
-//		//System.out.println(habilitado);
-//	}
 
 	//-----------------------------------------------------------
 	public void agregarJugada(int num) {
@@ -129,31 +121,42 @@ public class Juego {
 		}
 	}
 	//-----------------------------------------------------------
-	public void jugadaGanadora() {
-		if ( tablero[0][0]==tablero[0][1]&& tablero[0][1]==tablero[0][2]||
-			 tablero[1][0]==tablero[1][1]&& tablero[1][1]==tablero[1][2]||
-			 tablero[2][0]==tablero[2][1]&& tablero[2][1]==tablero[2][2]||
-			 tablero[0][0]==tablero[1][1]&& tablero[1][1]==tablero[2][2]||
-			 tablero[0][2]==tablero[1][1]&& tablero[1][1]==tablero[2][0]||
-			 tablero[0][0]==tablero[1][0]&& tablero[1][0]==tablero[2][0]||
-			 tablero[0][1]==tablero[1][1]&& tablero[1][1]==tablero[2][1]||
-			 tablero[0][2]==tablero[1][2]&& tablero[1][2]==tablero[2][2]||
-			 tablero[0][1]==tablero[1][2]&& tablero[1][2]==tablero[2][0]||
-			 tablero[0][0]==tablero[1][2]&& tablero[1][2]==tablero[2][1]||
-			 tablero[0][1]==tablero[1][0]&& tablero[1][0]==tablero[2][2]||
-			 tablero[0][2]==tablero[1][0]&& tablero[1][0]==tablero[2][1] )
-			 
-		 {
-			if(turno == 'X') {
-				System.out.println("gano X");
-				habilitado=false;
-			}
-			else {
-				System.out.println("gano O");
-				habilitado=false;
-			}
-		}
-	}	
+	public boolean listaGanadoras() 
+    {
+        if(tablero[0][0]==tablero[0][1]&& tablero[0][1]==tablero[0][2] ||
+           tablero[1][0]==tablero[1][1]&& tablero[1][1]==tablero[1][2] ||
+           tablero[2][0]==tablero[2][1]&& tablero[2][1]==tablero[2][2] ||
+           tablero[0][0]==tablero[1][1]&& tablero[1][1]==tablero[2][2] ||
+           tablero[0][2]==tablero[1][1]&& tablero[1][1]==tablero[2][0] ||
+           tablero[0][0]==tablero[1][0]&& tablero[1][0]==tablero[2][0] ||
+           tablero[0][1]==tablero[1][1]&& tablero[1][1]==tablero[2][1] ||
+           tablero[0][2]==tablero[1][2]&& tablero[1][2]==tablero[2][2] ||
+           tablero[0][1]==tablero[1][2]&& tablero[1][2]==tablero[2][0] ||
+           tablero[0][0]==tablero[1][2]&& tablero[1][2]==tablero[2][1] ||
+           tablero[0][1]==tablero[1][0]&& tablero[1][0]==tablero[2][2] ||
+           tablero[0][2]==tablero[1][0]&& tablero[1][0]==tablero[2][1] ) 
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+	
+	public boolean jugadaGanadora() {
+        if (listaGanadoras()) 
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+
+    }
+
 	
 	//-----------------------------------------------------------
 	public void vaciarJugadas() {
@@ -169,7 +172,7 @@ public class Juego {
 		habilitado=true;
 	}
 	
-	public static char getTurno() {
+	public char getTurno() {
 		return turno;
 	}
 	

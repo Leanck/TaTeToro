@@ -1,25 +1,33 @@
 package interfaz;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import java.awt.Color;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.image.*;
+import java.awt.*;
+import javax.swing.*;
+import javax.imageio.*;
 
 import control.Juego;
 
-import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Ventana {
 
-	private JFrame frame;	
+	private JFrame frame;
+	private JFrame frame2;
+	private ImageIcon X;
+	private ImageIcon O;
+	private ImageIcon mesa;
+	private boolean seleccionado1;
+	private boolean seleccionado2;
+	private boolean seleccionado3;
+	private boolean seleccionado4;
+	private boolean seleccionado5;
+	private boolean seleccionado6;
+	private boolean seleccionado7;
+	private boolean seleccionado8;
+	private boolean seleccionado9;
 
 	/**
 	 * Launch the application.
@@ -30,6 +38,10 @@ public class Ventana {
 				try {
 					Ventana window = new Ventana();
 					window.frame.setVisible(true);
+					
+					Ventana gameOver = new Ventana();
+					gameOver.frame2.setVisible(false);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -41,213 +53,285 @@ public class Ventana {
 	 * Create the application.
 	 */
 	public Ventana() {
-		initialize();
+		initialize();	
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() { //frame del fondo principal
 		Juego juego = new Juego();
+		//------------------------------------------------
+		frame2 = new JFrame();
+		frame2.setBounds(680, 130, 600, 700);
+		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame2.getContentPane().setLayout(null);
+		//------------------------------------------------
 		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 450, 300);
+		seleccionado1 = false;
+		frame.setBounds(680, 130, 600, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JPanel tablero = new JPanel();
-		tablero.setBounds(165, 11, 250, 250);
-		frame.getContentPane().add(tablero);
-		tablero.setLayout(new GridLayout(3, 3, 0, 0));
-		//------------------------------------------------------------------------
-		//Primera fila------------------------------------------------------------
-		JPanel primeraFila = new JPanel();
-		primeraFila.setBackground(SystemColor.menu);
-		tablero.add(primeraFila);
-		primeraFila.setLayout(null);
-		//------------------------------------------------------------------------
-		JButton boton1 = new JButton("1");
-		JButton boton2 = new JButton("2");
-		JButton boton3 = new JButton("3");
-		//------------------------------------------------------------------------
-		boton1.setForeground(SystemColor.controlHighlight);
-		boton2.setForeground(SystemColor.controlHighlight);
-		boton3.setForeground(SystemColor.controlHighlight);
-		//------------------------------------------------------------------------
-		boton1.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		boton2.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		boton3.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		//------------------------------------------------------------------------
-		boton1.setBounds(0, 0, 83, 83);
-		boton2.setBounds(83, 0, 83, 83);
-		boton3.setBounds(166, 0, 83, 83);
-		//------------------------------------------------------------------------
-		primeraFila.add(boton1);
-		primeraFila.add(boton2);
-		primeraFila.add(boton3);
-		//------------------------------------------------------------------------
-		boton1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton1.setEnabled(false);
-				juego.agregarJugada(boton1.getText().charAt(0));
-				//boton1.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
-				JOptionPane.showMessageDialog(null,"Hola ,soy un ventana!");
+		X = new ImageIcon("recursos/X.png");
+		O = new ImageIcon("recursos/O.png");
+		mesa = new ImageIcon("recursos/layout1.png");
+		
+		JLabel Tablero = new JLabel(""); //TABLERO
+		Tablero.setBounds(89, 170, 410, 410);
+		Tablero.setIcon(mesa);
+		frame.getContentPane().add(Tablero);
+		
+		
+		JLabel panel1 = new JLabel("");
+		panel1.setBounds(89, 170, 123, 124);
+		frame.getContentPane().add(panel1);
+		
+		//-----------------------------------------------------------
+			
+		panel1.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado1 == false) {
+					if(juego.getTurno() == 'X') {
+						panel1.setIcon(X);
+					}
+					else {
+						panel1.setIcon(O);
+					}
+					juego.agregarJugada(1);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();	
+					seleccionado1 = true;
+					}
+				}	
+		});
+		
+		//-----------------------------------------------------------
+		JLabel panel2 = new JLabel("");
+		panel2.setBounds(232, 170, 123, 124);
+		frame.getContentPane().add(panel2);
+		
+		panel2.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado2 == false) {
+					if(juego.getTurno() == 'X') {
+						panel2.setIcon(X);
+					}
+					else {
+						panel2.setIcon(O);
+					}
+					juego.agregarJugada(2);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();
+					seleccionado2 = true;
+				}
 			}
 		});
-		//------------------------------------------------------------------------
-		boton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton2.setEnabled(false);
-				juego.agregarJugada(boton2.getText().charAt(0));
-				//boton2.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
-			}
+		//-----------------------------------------------------------
+		JLabel panel3 = new JLabel("");
+		panel3.setBounds(376, 170, 123, 124);
+		frame.getContentPane().add(panel3);
+		
+		panel3.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado3 == false) {
+					if(juego.getTurno() == 'X') {
+						panel3.setIcon(X);
+					}
+					else {
+						panel3.setIcon(O);
+					}
+					juego.agregarJugada(3);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();
+					seleccionado3 = true;
+					}
+				}
 		});
-		//------------------------------------------------------------------------
-		boton3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton3.setEnabled(false);
-				juego.agregarJugada(boton3.getText().charAt(0));
-				//boton3.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
-			}
+		//-----------------------------------------------------------
+		JLabel panel4 = new JLabel("");
+		panel4.setBounds(89, 314, 123, 124);
+		frame.getContentPane().add(panel4);
+		
+		panel4.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado4 == false) {
+					if(juego.getTurno() == 'X') {
+						panel4.setIcon(X);
+					}
+					else {
+						panel4.setIcon(O);
+					}
+					juego.agregarJugada(4);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();
+					seleccionado4 = true;
+					}
+				}
 		});
-		//------------------------------------------------------------------------
-		//Segunda fila------------------------------------------------------------
-		JPanel segundaFila = new JPanel();
-		tablero.add(segundaFila);
-		segundaFila.setLayout(null);
-		//------------------------------------------------------------------------
-		JButton boton4 = new JButton("4");
-		JButton boton5 = new JButton("5");
-		JButton boton6 = new JButton("6");
-		//------------------------------------------------------------------------
-		boton4.setForeground(SystemColor.controlHighlight);
-		boton5.setForeground(SystemColor.controlHighlight);
-		boton6.setForeground(SystemColor.controlHighlight);
-		//------------------------------------------------------------------------
-		boton4.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		boton5.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		boton6.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		//------------------------------------------------------------------------
-		boton4.setBounds(0, 0, 83, 83);
-		boton5.setBounds(83, 0, 83, 83);
-		boton6.setBounds(166, 0, 83, 83);
-		//------------------------------------------------------------------------
-		segundaFila.add(boton4);
-		segundaFila.add(boton5);
-		segundaFila.add(boton6);
-		//------------------------------------------------------------------------
-		boton4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton4.setEnabled(false);
-				juego.agregarJugada(boton4.getText().charAt(0));
-				//boton4.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
+		//-----------------------------------------------------------
+		JLabel panel5 = new JLabel("");
+		panel5.setBounds(232, 314, 123, 124);
+		frame.getContentPane().add(panel5);
+		
+		panel5.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado5 == false) {
+					if(juego.getTurno() == 'X') {
+						panel5.setIcon(X);
+					}
+					else {
+						panel5.setIcon(O);
+					}
+					juego.agregarJugada(5);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();
+					seleccionado5 = true;
+					}
+				}
+				
+		});
+		//-----------------------------------------------------------
+		JLabel panel6 = new JLabel("");
+		panel6.setBounds(376, 314, 123, 124);
+		frame.getContentPane().add(panel6);
+		
+		panel6.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado6 == false) {
+					if(juego.getTurno() == 'X') {
+						panel6.setIcon(X);
+					}
+					else {
+						panel6.setIcon(O);
+					}
+					juego.agregarJugada(6);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();
+					seleccionado6 = true;
+				}
 				
 			}
 		});
-		//------------------------------------------------------------------------
-		boton5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton5.setEnabled(false);
-				juego.agregarJugada(boton5.getText().charAt(0));
-				//boton5.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
+		//-----------------------------------------------------------
+		JLabel panel7 = new JLabel("");
+		panel7.setBounds(89, 456, 123, 124);
+		frame.getContentPane().add(panel7);
+		
+		panel7.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado7 == false) {
+					if(juego.getTurno() == 'X') {
+						panel7.setIcon(X);
+					}
+					else {
+						panel7.setIcon(O);
+					}
+					juego.agregarJugada(7);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();
+					seleccionado7 = true;
+				}	
 			}
+				
 		});
-		//------------------------------------------------------------------------
-		boton6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton6.setEnabled(false);
-				juego.agregarJugada(boton6.getText().charAt(0));
-				//boton6.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
-			}
+		//-----------------------------------------------------------
+		JLabel panel8 = new JLabel("");
+		panel8.setBounds(232, 456, 123, 124);
+		frame.getContentPane().add(panel8);
+		
+		panel8.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado8 == false) {
+					if(juego.getTurno() == 'X') {
+						panel8.setIcon(X);
+					}
+					else {
+						panel8.setIcon(O);
+					}
+					juego.agregarJugada(8);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();
+					seleccionado8 = true;
+					}
+				}
 		});
-		//------------------------------------------------------------------------
-		//Tercera fila------------------------------------------------------------
-		JPanel terceraFila = new JPanel();
-		tablero.add(terceraFila);
-		terceraFila.setLayout(null);
-		//------------------------------------------------------------------------
-		JButton boton8 = new JButton("8");
-		JButton boton9 = new JButton("9");
-		JButton boton7 = new JButton("7");
-		//------------------------------------------------------------------------
-		boton7.setForeground(SystemColor.controlHighlight);
-		boton8.setForeground(SystemColor.controlHighlight);
-		boton9.setForeground(SystemColor.controlHighlight);
-		//------------------------------------------------------------------------
-		boton7.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		boton8.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		boton9.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		//------------------------------------------------------------------------
-		boton8.setBounds(83, 0, 83, 83);
-		boton9.setBounds(166, 0, 83, 83);
-		boton7.setBounds(0, 0, 83, 83);
-		//------------------------------------------------------------------------
-		terceraFila.add(boton8);
-		terceraFila.add(boton9);
-		terceraFila.add(boton7);
-		//------------------------------------------------------------------------
-		boton8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton8.setEnabled(false);
-				juego.agregarJugada(boton8.getText().charAt(0));
-				//boton8.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
-			}
-		});
-		//------------------------------------------------------------------------
-		boton9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton9.setEnabled(false);
-				juego.agregarJugada(boton9.getText().charAt(0));
-				//boton9.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
-			}
-		});
-		//------------------------------------------------------------------------
-		boton7.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton7.setEnabled(false);
-				juego.agregarJugada(boton7.getText().charAt(0));
-				//boton7.setText(juego.colocarSimboloDeJugador());
-				juego.jugadaGanadora();
-				juego.cambiarTurno();
-			}
-		});
-		//------------------------------------------------------------------------
-		//Reiniciar---------------------------------------------------------------
-		JButton Reiniciar = new JButton("Reiniciar");
+		//-----------------------------------------------------------
+		JLabel panel9 = new JLabel("");
+		panel9.setBounds(376, 456, 123, 124);
+		frame.getContentPane().add(panel9);
+		
+		panel9.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (Juego.isHabilitado() && seleccionado9 == false) {
+					if(juego.getTurno() == 'X') {
+						panel9.setIcon(X);
+					}
+					else {
+						panel9.setIcon(O);
+					}
+					juego.agregarJugada(9);
+					if(juego.jugadaGanadora()) {
+						habilitarVentana2();
+					}
+					juego.cambiarTurno();
+					seleccionado9 = true;
+					}
+				}
+	    });
+		//------------------------------------------------
+		JButton Reiniciar = new JButton("REINICIAR");
 		Reiniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boton1.setEnabled(true);boton1.setText("1");
-				boton2.setEnabled(true);boton2.setText("2");
-				boton3.setEnabled(true);boton3.setText("3");
-				boton4.setEnabled(true);boton4.setText("4");
-				boton5.setEnabled(true);boton5.setText("5");
-				boton6.setEnabled(true);boton6.setText("6");
-				boton7.setEnabled(true);boton7.setText("7");
-				boton8.setEnabled(true);boton8.setText("8");
-				boton9.setEnabled(true);boton9.setText("9");
-				//juego.mostrarJugadas();
-				juego.vaciarJugadas();
+			public void actionPerformed(ActionEvent arg0) {
+					juego.vaciarJugadas();
+					panel1.setIcon(null);
+					panel2.setIcon(null);
+					panel3.setIcon(null);
+					panel4.setIcon(null);
+					panel5.setIcon(null);
+					panel6.setIcon(null);
+					panel7.setIcon(null);
+					panel8.setIcon(null);
+					panel9.setIcon(null);	
+					seleccionado1 = false;
+					seleccionado2 = false;
+					seleccionado3 = false;
+					seleccionado4 = false;
+					seleccionado5 = false;
+					seleccionado6 = false;
+					seleccionado7 = false;
+					seleccionado8 = false;
+					seleccionado9 = false;
+					habilitarVentana1();
 			}
-		});
-		Reiniciar.setBounds(32, 203, 89, 23);
-		frame.getContentPane().add(Reiniciar);
-		
-		
+			});
+		Reiniciar.setFont(new Font("High Tower Text", Font.PLAIN, 15));
+		Reiniciar.setBounds(231, 489, 120, 60);
+		frame2.getContentPane().add(Reiniciar);
+		//------------------------------------------------
+	}
+	public void habilitarVentana2() {
+		frame2.setVisible(true);
+		//frame.setVisible(false);
+	}
+	public void habilitarVentana1() {
+		frame2.setVisible(false);
+		frame.setVisible(true);
 	}
 }
