@@ -61,12 +61,12 @@ public class Ventana {
 	 */
 	private void initialize() { //frame del fondo principal
 		Juego juego = new Juego();
-		//------------------------------------------------
+		//ventana de fin de juego-------------------------
 		frame2 = new JFrame();
 		frame2.setBounds(680, 130, 600, 700);
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame2.getContentPane().setLayout(null);
-		//------------------------------------------------
+		//Ventana de juego--------------------------------
 		frame = new JFrame();
 		seleccionado1 = false;
 		frame.setBounds(680, 130, 600, 700);
