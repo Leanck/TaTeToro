@@ -11,10 +11,14 @@ public class Juego {
 	private static char turno;
 	private char[][] tablero;
 	private static boolean habilitado;
+	private String nombre_jugador_x;
+	private String nombre_jugador_o;
 	
 	public Juego() {
 		turno = 'X';
 		habilitado = true;
+		nombre_jugador_x = "";
+		nombre_jugador_o = "";
 		tablero = new char[3][3];
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero.length; j++) {
@@ -36,11 +40,11 @@ public class Juego {
 	public void cambiarTurno() {
 		if(turno == 'X') {
 			turno = 'O';
-			System.out.println(habilitado);
+			//System.out.println(habilitado);
 		}
 		else {
 			turno = 'X';
-		   System.out.println(habilitado);
+		   //System.out.println(habilitado);
 		}
 	
 	}
@@ -92,7 +96,7 @@ public class Juego {
 				tablero[1][2] = 'X';
 			}
 			else {
-				tablero[1][2] = 'X';
+				tablero[1][2] = 'O';
 			}
 		}
 		if(num==7 && habilitado==true) {
@@ -132,9 +136,9 @@ public class Juego {
            tablero[0][1]==tablero[1][1]&& tablero[1][1]==tablero[2][1] ||
            tablero[0][2]==tablero[1][2]&& tablero[1][2]==tablero[2][2] ||
            tablero[0][1]==tablero[1][2]&& tablero[1][2]==tablero[2][0] ||
-           tablero[0][0]==tablero[1][2]&& tablero[1][2]==tablero[2][1] ||
            tablero[0][1]==tablero[1][0]&& tablero[1][0]==tablero[2][2] ||
-           tablero[0][2]==tablero[1][0]&& tablero[1][0]==tablero[2][1] ) 
+           tablero[2][1]==tablero[1][0]&& tablero[1][0]==tablero[0][2] ||
+           tablero[2][1]==tablero[1][2]&& tablero[1][2]==tablero[0][0] ) 
         {
             return true;
         }
@@ -178,6 +182,19 @@ public class Juego {
 	
 	public static boolean isHabilitado() {
 		return habilitado;
+	}
+	
+	public void NombrarJugadorX(String nick) {
+		nombre_jugador_x = nick;
+	}
+	public void NombrarJugadorO(String nick) {
+		nombre_jugador_o = nick;
+	}
+	public String getNombreJugadorX() {
+		return nombre_jugador_x;
+	}
+	public String getNombreJugadorO() {
+		return nombre_jugador_o;
 	}
 	
 	
